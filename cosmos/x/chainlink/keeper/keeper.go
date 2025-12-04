@@ -1,6 +1,7 @@
 package keeper
 
 import (
+	"context"
 	"fmt"
 
 	"cosmossdk.io/collections"
@@ -52,6 +53,11 @@ func NewKeeper(
 	k.Schema = schema
 
 	return k
+}
+
+func (k Keeper) SubmitDataFromChainlinkFunctions(ctx context.Context, key []byte, value []byte) {
+	kvStore := k.storeService.OpenKVStore(ctx)
+	kvStore.Set(key, value)
 }
 
 // GetAuthority returns the module's authority.

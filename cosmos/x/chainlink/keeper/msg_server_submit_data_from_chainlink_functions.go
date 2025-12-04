@@ -13,6 +13,7 @@ func (k msgServer) SubmitDataFromChainlinkFunctions(ctx context.Context, msg *ty
 	}
 
 	// TODO: Handle the message
+	k.Keeper.SubmitDataFromChainlinkFunctions(ctx, []byte("someKey"), []byte(msg.Data))
 
 	return &types.MsgSubmitDataFromChainlinkFunctionsResponse{}, nil
 }
